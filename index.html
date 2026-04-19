@@ -2,6 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+
+<!-- 📱 Mobile Optimization -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>🎂</title>
 
 <style>
@@ -12,28 +16,58 @@ body {
   overflow: hidden;
   text-align: center;
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
+/* 📦 Main Container */
 .container {
-  margin-top: 10%;
+  padding: 20px;
+  max-width: 350px;
+  width: 90%;
+  animation: fadeIn 2s ease;
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
+/* 💌 Message */
 #message {
-  font-size: 1.3rem;
-  margin-top: 20px;
-  min-height: 50px;
+  font-size: 1rem;
+  margin-top: 15px;
+  min-height: 40px;
 }
 
-/* Photo */
+/* 📸 Photo */
 img {
-  width: 200px;
-  border-radius: 20px;
-  margin-top: 20px;
+  width: 150px;
+  border-radius: 15px;
+  margin-top: 15px;
   box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+/* ✨ Animation */
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* 📱 iPhone tweaks */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  #message {
+    font-size: 0.95rem;
+  }
+
+  img {
+    width: 130px;
+  }
 }
 </style>
 </head>
@@ -62,7 +96,7 @@ img {
 // ❤️ Naam change yaha kar
 document.getElementById("name").innerText = "Kinjal";
 
-// 💌 Typing effect
+// 💌 Typing effect message
 let text = "Wishing you fall in love again with life every single day ✨";
 let i = 0;
 
@@ -75,7 +109,7 @@ function typing() {
 }
 typing();
 
-// 🎆 Confetti blast
+// 🎆 Confetti animation
 setInterval(() => {
   confetti({
     particleCount: 100,
