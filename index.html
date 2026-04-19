@@ -15,34 +15,32 @@ body {
   overflow: hidden;
 }
 
-/* 🐻 Floating Animals */
+/* 🐻 Animals */
 .animal {
   position: absolute;
   width: 45px;
   animation: float 12s linear infinite;
-  opacity: 0.9;
 }
 
 @keyframes float {
-  0% { transform: translateY(100vh) translateX(0); }
-  100% { transform: translateY(-10vh) translateX(60px); }
+  0% { transform: translateY(100vh); }
+  100% { transform: translateY(-10vh); }
 }
 
-/* ✨ Pink Glitter */
+/* ✨ Glitter */
 .glitter {
   position: absolute;
   width: 8px;
   height: 8px;
   background: pink;
   border-radius: 50%;
-  opacity: 0.8;
   animation: sparkle 5s linear infinite;
 }
 
 @keyframes sparkle {
-  0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
-  50% { opacity: 1; }
-  100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+  0% { transform: translateY(100vh); opacity:0; }
+  50% { opacity:1; }
+  100% { transform: translateY(-10vh); opacity:0; }
 }
 
 /* 🎁 Intro */
@@ -52,55 +50,66 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  text-align: center;
 }
 
 .gift {
   font-size: 5rem;
   cursor: pointer;
-  animation: bounce 1.5s infinite;
-}
-
-.tap-text {
-  margin-top: 20px;
-  font-size: 1.2rem;
 }
 
 /* 🎉 Main */
 #main {
   display: none;
   height: 100vh;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: flex-start; /* 🔥 shifted upward */
+  padding-top: 80px; /* 🔥 control top spacing */
   text-align: center;
 }
 
-.container {
-  padding: 20px;
-  max-width: 350px;
-  width: 90%;
-  animation: fadeIn 1.5s ease;
-}
-
+/* 🎂 Heading */
 h1 {
   font-size: 2rem;
+  margin-bottom: 20px;
 }
 
+/* 💌 Message container */
 #message {
+  width: 90%;
+  max-width: 320px;
+}
+
+/* 💖 Styled lines */
+.line {
+  opacity: 0;
+  margin-top: 12px;
+  transition: all 0.8s ease;
+}
+
+.line1 {
   font-size: 1rem;
-  margin-top: 15px;
-  min-height: 40px;
 }
 
-/* ✨ Animations */
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+.line2 {
+  font-size: 1.2rem;
+  color: #ffe4ec;
+  font-weight: bold;
 }
 
-@keyframes fadeIn {
-  from {opacity: 0; transform: translateY(20px);}
-  to {opacity: 1; transform: translateY(0);}
+.line3 {
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.line4 {
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 </style>
 </head>
@@ -108,32 +117,30 @@ h1 {
 <body>
 
 <!-- 🐻 Animals -->
-<img class="animal" src="https://cdn-icons-png.flaticon.com/512/616/616408.png" style="left:10%; animation-delay:0s;">
-<img class="animal" src="https://cdn-icons-png.flaticon.com/512/616/616430.png" style="left:25%; animation-delay:2s;">
-<img class="animal" src="https://cdn-icons-png.flaticon.com/512/1998/1998627.png" style="left:40%; animation-delay:4s;"> <!-- 🐘 Elephant -->
-<img class="animal" src="https://cdn-icons-png.flaticon.com/512/3069/3069172.png" style="left:60%; animation-delay:1s;"> <!-- 🦢 Swan -->
-<img class="animal" src="https://cdn-icons-png.flaticon.com/512/616/616408.png" style="left:75%; animation-delay:3s;">
-<img class="animal" src="https://cdn-icons-png.flaticon.com/512/3069/3069172.png" style="left:90%; animation-delay:5s;">
+<img class="animal" src="https://cdn-icons-png.flaticon.com/512/616/616408.png" style="left:10%;">
+<img class="animal" src="https://cdn-icons-png.flaticon.com/512/1998/1998627.png" style="left:40%;">
+<img class="animal" src="https://cdn-icons-png.flaticon.com/512/3069/3069172.png" style="left:70%;">
 
-<!-- ✨ Glitter particles -->
-<div class="glitter" style="left:15%; animation-delay:0s;"></div>
-<div class="glitter" style="left:30%; animation-delay:1s;"></div>
-<div class="glitter" style="left:45%; animation-delay:2s;"></div>
-<div class="glitter" style="left:60%; animation-delay:3s;"></div>
-<div class="glitter" style="left:75%; animation-delay:4s;"></div>
-<div class="glitter" style="left:90%; animation-delay:5s;"></div>
+<!-- ✨ Glitter -->
+<div class="glitter" style="left:20%;"></div>
+<div class="glitter" style="left:50%;"></div>
+<div class="glitter" style="left:80%;"></div>
 
 <!-- 🎁 Intro -->
 <div id="intro">
   <div class="gift" onclick="openGift()">🎁</div>
-  <div class="tap-text">Tap to open your surprise 💖</div>
+  <p>Tap to open your surprise 💖</p>
 </div>
 
 <!-- 🎉 Main -->
 <div id="main">
-  <div class="container">
-    <h1>🎉 Happiest Birthday <span id="name">Kinjal</span> 🎂</h1>
-    <div id="message"></div>
+  <h1>🎉 Happiest Birthday Kinjal 🎂</h1>
+
+  <div id="message">
+    <div class="line line1"></div>
+    <div class="line line2"></div>
+    <div class="line line3"></div>
+    <div class="line line4"></div>
   </div>
 </div>
 
@@ -141,7 +148,6 @@ h1 {
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <script>
-// 🎁 Open Gift
 function openGift() {
   document.getElementById("intro").style.display = "none";
   document.getElementById("main").style.display = "flex";
@@ -150,22 +156,29 @@ function openGift() {
   startConfetti();
 }
 
-// 💌 Typing
-let text = "Wishing you fall in love again with life every single day ✨";
-let i = 0;
-
 function startTyping() {
-  function typing() {
-    if (i < text.length) {
-      document.getElementById("message").innerHTML += text.charAt(i);
+  let lines = [
+    "Wishing you...",
+    "fall in love with life again 💖",
+    "every single day ✨",
+    "Stay magical always 🫶"
+  ];
+
+  let i = 0;
+
+  function showLine() {
+    if (i < lines.length) {
+      let el = document.querySelector(".line" + (i + 1));
+      el.innerHTML = lines[i];
+      el.classList.add("show");
       i++;
-      setTimeout(typing, 50);
+      setTimeout(showLine, 800);
     }
   }
-  typing();
+
+  showLine();
 }
 
-// 🎆 Confetti
 function startConfetti() {
   setInterval(() => {
     confetti({
