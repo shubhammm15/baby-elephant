@@ -1,64 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Happy Birthday 🎉</title>
+<meta charset="UTF-8">
+<title>Happy Birthday ❤️</title>
 
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #ff758c, #ff7eb3);
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: white;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  overflow: hidden;
+  text-align: center;
+  color: white;
+}
 
-    .card {
-      background: rgba(255,255,255,0.1);
-      padding: 40px;
-      border-radius: 20px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 0 30px rgba(0,0,0,0.2);
-      animation: fadeIn 2s ease;
-    }
+.container {
+  margin-top: 10%;
+}
 
-    h1 {
-      font-size: 3rem;
-      animation: bounce 2s infinite;
-    }
+h1 {
+  font-size: 3rem;
+}
 
-    p {
-      font-size: 1.2rem;
-      margin-top: 20px;
-    }
+#message {
+  font-size: 1.3rem;
+  margin-top: 20px;
+  min-height: 50px;
+}
 
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-  </style>
+/* Photo */
+img {
+  width: 200px;
+  border-radius: 20px;
+  margin-top: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+</style>
 </head>
 
 <body>
 
-  <div class="card">
-    <h1>🎉 Happy Birthday Bachuuu! 🎂</h1>
-    <p>
-      Wishing you endless happiness, सफलता, and smiles 💖<br><br>
-      You are truly special ✨<br>
-      Enjoy your day to the fullest 🥳
-    </p>
-  </div>
+<!-- 🎵 Background Music -->
+<audio autoplay loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+</audio>
+
+<div class="container">
+  <h1>🎉 Happy Birthday <span id="name">Someone</span> 🎂</h1>
+  
+  <!-- 💌 Typing message -->
+  <div id="message"></div>
+
+  <!-- 📸 Photo -->
+  <img src="https://i.imgur.com/yourphoto.jpg" alt="photo">
+</div>
+
+<!-- 🎆 Confetti Script -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<script>
+// ❤️ Naam change yaha kar
+document.getElementById("name").innerText = "Kinjal";
+
+// 💌 Typing effect
+let text = "Wishing you all the happiness in the world 💖 You mean a lot to me... Stay amazing always ✨";
+let i = 0;
+
+function typing() {
+  if (i < text.length) {
+    document.getElementById("message").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typing, 50);
+  }
+}
+typing();
+
+// 🎆 Confetti blast
+setInterval(() => {
+  confetti({
+    particleCount: 100,
+    spread: 70,
+    origin: { y: 0.6 }
+  });
+}, 2000);
+
+</script>
 
 </body>
 </html>
