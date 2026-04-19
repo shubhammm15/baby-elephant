@@ -6,16 +6,20 @@
 
 <title>🎁</title>
 
-<style>body {
+<style>
+body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: url("https://github.com/shubhammm15/baby-elephant/blob/main/vecteezy_birthday-cake-with-pink-balloons-confetti-and-cupcakes_52749235.jpg") no-repeat center center/cover;
+
+  /* ✅ FIXED BACKGROUND (RAW LINK) */
+  background: url("https://raw.githubusercontent.com/shubhammm15/baby-elephant/main/vecteezy_birthday-cake-with-pink-balloons-confetti-and-cupcakes_52749235.jpg") no-repeat center center/cover;
+
   color: white;
   overflow: hidden;
   position: relative;
 }
 
-/* 🌫️ Overlay for readability */
+/* 🌫️ Overlay */
 body::before {
   content: "";
   position: absolute;
@@ -26,7 +30,7 @@ body::before {
   left: 0;
 }
 
-/* 🔝 Keep content above overlay */
+/* 🔝 Content above overlay */
 #intro, #main {
   position: relative;
   z-index: 2;
@@ -68,6 +72,7 @@ body::before {
   animation: sparkle 5s linear infinite;
   z-index: 1;
 }
+
 @keyframes sparkle {
   0% { transform: translateY(100vh); opacity:0; }
   50% { opacity:1; }
@@ -88,6 +93,7 @@ body::before {
   cursor: pointer;
   animation: bounce 1.5s infinite;
 }
+
 @keyframes bounce {
   0%,100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
@@ -108,7 +114,7 @@ body::before {
 h1 {
   font-size: 2rem;
   margin-bottom: 30px;
-  text-shadow: 0 0 10px rgba(0,0,0,0.6); /* 🔥 glow for visibility */
+  text-shadow: 0 0 10px rgba(0,0,0,0.6);
 }
 
 /* 💌 Message */
