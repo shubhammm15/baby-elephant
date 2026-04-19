@@ -2,140 +2,132 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-
-<!-- 📱 Mobile Optimization -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>🎂</title>
+<title>🎁</title>
 
 <style>
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(135deg, #ff758c, #ff7eb3);
-  overflow: hidden;
-  text-align: center;
   color: white;
+  overflow: hidden;
+}
+
+/* 🎁 Intro Screen */
+#intro {
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  flex-direction: column;
+  text-align: center;
 }
 
-/* 📦 Container */
+.gift {
+  font-size: 5rem;
+  cursor: pointer;
+  animation: bounce 1.5s infinite;
+}
+
+.tap-text {
+  margin-top: 20px;
+  font-size: 1.2rem;
+}
+
+/* 🎉 Main Content */
+#main {
+  display: none;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
 .container {
   padding: 20px;
   max-width: 350px;
   width: 90%;
-  animation: fadeIn 2s ease;
+  animation: fadeIn 1.5s ease;
 }
 
 h1 {
   font-size: 2rem;
 }
 
-/* 💌 Message */
 #message {
   font-size: 1rem;
   margin-top: 15px;
   min-height: 40px;
 }
 
-/* 📸 Photo */
-img {
-  width: 150px;
-  border-radius: 15px;
-  margin-top: 15px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+/* ✨ Animations */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
-/* 🎵 Button */
-button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 20px;
-  background: white;
-  color: #ff758c;
-  font-weight: bold;
-  margin-top: 20px;
-  cursor: pointer;
-}
-
-/* ✨ Animation */
 @keyframes fadeIn {
   from {opacity: 0; transform: translateY(20px);}
   to {opacity: 1; transform: translateY(0);}
-}
-
-/* 📱 iPhone tweaks */
-@media (max-width: 480px) {
-  h1 {
-    font-size: 1.8rem;
-  }
-
-  #message {
-    font-size: 0.95rem;
-  }
-
-  img {
-    width: 130px;
-  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🎵 Music -->
-<audio id="music" loop>
-  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
-</audio>
+<!-- 🎁 Intro -->
+<div id="intro">
+  <div class="gift" onclick="openGift()">🎁</div>
+  <div class="tap-text">Tap to open your surprise 💖</div>
+</div>
 
-<div class="container">
-  <h1>🎉 Happiest Birthday <span id="name">Someone</span> 🎂</h1>
-  
-  <!-- 💌 Typing message -->
-  <div id="message"></div>
-
-  <!-- 📸 Photo -->
-  <img src="https://i.imgur.com/yourphoto.jpg" alt="photo">
-
-  <!-- 🎵 Play Button -->
-  <button onclick="playMusic()">🎵 Tap for Surprise</button>
+<!-- 🎉 Main Content -->
+<div id="main">
+  <div class="container">
+    <h1>🎉 Happiest Birthday <span id="name">Kinjal</span> 🎂</h1>
+    <div id="message"></div>
+  </div>
 </div>
 
 <!-- 🎆 Confetti -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <script>
-// ❤️ Naam change kar
-document.getElementById("name").innerText = "Kinjal";
+// 🎁 Open Gift
+function openGift() {
+  document.getElementById("intro").style.display = "none";
+  document.getElementById("main").style.display = "flex";
+
+  startTyping();
+  startConfetti();
+}
 
 // 💌 Typing effect
 let text = "Wishing you fall in love again with life every single day ✨";
 let i = 0;
 
-function typing() {
-  if (i < text.length) {
-    document.getElementById("message").innerHTML += text.charAt(i);
-    i++;
-    setTimeout(typing, 50);
+function startTyping() {
+  function typing() {
+    if (i < text.length) {
+      document.getElementById("message").innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typing, 50);
+    }
   }
+  typing();
 }
-typing();
 
-// 🎆 Confetti
-setInterval(() => {
-  confetti({
-    particleCount: 100,
-    spread: 70,
-    origin: { y: 0.6 }
-  });
-}, 2000);
-
-// 🎵 Play Music
-function playMusic() {
-  document.getElementById("music").play();
+// 🎆 Confetti burst
+function startConfetti() {
+  setInterval(() => {
+    confetti({
+      particleCount: 120,
+      spread: 80,
+      origin: { y: 0.6 }
+    });
+  }, 2000);
 }
 </script>
 
